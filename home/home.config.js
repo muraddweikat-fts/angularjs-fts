@@ -8,8 +8,9 @@ function HomeConfig($stateProvider) {
       templateUrl: 'home/template.html',
     })
     .state('otherwise', {
-      url: '/',
-      template: 'Otherwise',
+      url: '',
+      controller: 'HomeController',
+      templateUrl: 'home/template.html',
     });
 }
 

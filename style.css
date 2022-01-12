@@ -2,14 +2,23 @@ h1,
 p {
   font-family: Lato;
 }
-.navbar a,
-.navbar span,
-.navbar button {
+.menu .menu-item li,
+.menu .menu-item button,
+.menu .menu-item span {
   color: white;
 }
-.navbar li,
-.navbar li button > span {
+.menu .menu-item.second-level li,
+.menu .menu-item.second-level button,
+.menu .menu-item.second-level span {
   color: black;
+}
+.menu-item ul > li svg {
+  fill: black;
+}
+.menu-item > button,
+.menu-item > li {
+  padding-left: 16px;
+  padding-right: 16px;
 }
 .menu button {
   background: transparent;
@@ -18,7 +27,7 @@ p {
 .menu > .menu-item > button {
   min-height: 50px;
 }
-.menu ul li:hover {
+.menu ul li.link:hover {
   cursor: pointer;
 }
 .menu li > ul {

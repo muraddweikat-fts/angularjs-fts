@@ -2,20 +2,15 @@ class AboutController {
   constructor($scope) {
     'ngInject';
     $scope.title = 'About';
-    $scope.menu = [
+    $scope.leftMenu = [
       {
-        title: 'Test Actions',
+        title: 'Actions',
         children: [
           {
-            title: 'Test Save',
+            title: 'Save',
           },
           {
-            title: 'Test Save and new',
-            children: [
-              { title: 'Sub Menu 1' },
-              { title: 'Sub Menu 2' },
-              { title: 'Sub Menu 3' },
-            ],
+            title: 'Save and new',
           },
         ],
       },
@@ -24,9 +19,36 @@ class AboutController {
         children: [
           { title: 'PHP' },
           { title: 'Python' },
-          { title: 'Javascript' },
+          {
+            title: 'Javascript',
+            children: [
+              { title: 'ReactJs' },
+              { title: 'AngularJs' },
+              { title: 'Hidden', isVisible: ()=>false },
+              { title: 'NodeJs' },
+            ],
+          },
+          { title: 'Hidden Menu', isVisible: false },
+          { title: 'Java' },
         ],
       },
+    ];
+    $scope.rightMenu = [
+      {
+        title: 'Home',
+        isVisible: true,
+        sref: 'home',
+      },
+      {
+        title: 'About',
+        isVisible: true,
+        sref: 'about',
+      },
+      {
+        title: 'Hidden',
+        isVisible: false,
+      },
+      { title: 'Not Link' },
     ];
   }
 }

@@ -1,13 +1,17 @@
 <div class="menu">
-  <div class="menu-item inline-block" ng-repeat="menuItem in menu">
+  <ul class="menu-item inline-block" ng-repeat="menuItem in menu">
+    <li ng-if="!menuItem.children && menuItem.isVisible != false">
+      <a ui-sref="{{menuItem.sref}}" ng-if="menuItem.sref"
+        >{{menuItem.title}}</a
+      >
+      <span ng-if="!menuItem.sref">{{menuItem.title}}</span>
+    </li>
     <button
       class="outline-none focus:outline-none px-3 py-1 flex items-center"
-      ng-if="menuItem.children"
+      ng-if="menuItem.children && menuItem.isVisible != false"
     >
       <span class="pr-1 font-semibold flex-1">{{menuItem.title}}</span>
-      <span>
-        <r365-arrow></r365-arrow>
-      </span>
+      <r365-arrow></r365-arrow>
     </button>
     <ul
       class="
@@ -20,17 +24,57 @@
         duration-150
         ease-in-out
         origin-top
+        menu-item
+        second-level
       "
       style="margin-top: 1px"
-      ng-if="menuItem.children"
+      ng-if="menuItem.children && menuItem.isVisible != false"
     >
       <li
-        class="px-3 py-1 hover:bg-purple-400"
+        class="relative px-3 py-1 hover:bg-purple-400"
         ng-repeat="subMenuItem in menuItem.children"
+        ng-if="subMenuItem.isVisible != false"
       >
-        {{subMenuItem.title}}
+        <span ng-if="!subMenuItem.children">{{subMenuItem.title}}</span>
+
+        <button
+          class="
+            w-full
+            text-left
+            flex
+            items-center
+            outline-none
+            focus:outline-none
+          "
+          ng-if="subMenuItem.children"
+        >
+          <span class="pr-1 flex-1">{{subMenuItem.title}}</span>
+          <r365-arrow></r365-arrow>
+        </button>
+        <ul
+          class="
+            bg-white
+            border
+            absolute
+            top-0
+            right-0
+            transition
+            duration-150
+            ease-in-out
+            origin-top-left
+            min-w-32
+          "
+          ng-if="subMenuItem.children"
+        >
+          <li
+            class="px-3 py-1 hover:bg-purple-400"
+            ng-repeat="secondSubMenuItem in subMenuItem.children"
+            ng-if="secondSubMenuItem.isVisible != false"
+          >
+            {{secondSubMenuItem.title}}
+          </li>
+        </ul>
       </li>
     </ul>
-    <li ng-if="!menuItem.children">{{menuItem.title}}</li>
-  </div>
+  </ul>
 </div>
