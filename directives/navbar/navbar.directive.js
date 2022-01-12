@@ -7,9 +7,6 @@ function NabvarDirective() {
       leftMenu: '=',
       rightMenu: '=',
     },
-    link: function ($scope) {
-      console.log('Scope', $scope);
-    },
   };
 }
 

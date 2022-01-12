@@ -1,6 +1,9 @@
 <div class="menu">
   <ul class="menu-item inline-block" ng-repeat="menuItem in menu">
-    <li ng-if="!menuItem.children && menuItem.isVisible != false">
+    <li
+      ng-if="!menuItem.children && !menuItem.isHidden"
+      title="{{menuItem.title}}"
+    >
       <a ui-sref="{{menuItem.sref}}" ng-if="menuItem.sref"
         >{{menuItem.title}}</a
       >
@@ -8,7 +11,7 @@
     </li>
     <button
       class="outline-none focus:outline-none px-3 py-1 flex items-center"
-      ng-if="menuItem.children && menuItem.isVisible != false"
+      ng-if="menuItem.children && !menuItem.isHidden"
     >
       <span class="pr-1 font-semibold flex-1">{{menuItem.title}}</span>
       <r365-arrow></r365-arrow>
@@ -28,12 +31,15 @@
         second-level
       "
       style="margin-top: 1px"
-      ng-if="menuItem.children && menuItem.isVisible != false"
+      ng-if="menuItem.children && !menuItem.isHidden"
     >
       <li
-        class="relative px-3 py-1 hover:bg-purple-400"
+        ng-if="!subMenuItem.isHidden"
         ng-repeat="subMenuItem in menuItem.children"
-        ng-if="subMenuItem.isVisible != false"
+        ng-click="subMenuItem.onClick()"
+        class="relative px-3 py-1 hover:bg-purple-400"
+        ng-class="{'menu-link': subMenuItem.onClick || subMenuItem.sref}"
+        title="{{subMenuItem.title}}"
       >
         <span ng-if="!subMenuItem.children">{{subMenuItem.title}}</span>
 
@@ -67,9 +73,12 @@
           ng-if="subMenuItem.children"
         >
           <li
-            class="px-3 py-1 hover:bg-purple-400"
             ng-repeat="secondSubMenuItem in subMenuItem.children"
-            ng-if="secondSubMenuItem.isVisible != false"
+            ng-if="!secondSubMenuItem.isHidden"
+            ng-click="secondSubMenuItem.onClick()"
+            class="px-3 py-1 hover:bg-purple-400"
+            ng-class="{'menu-link': secondSubMenuItem.onClick || secondSubMenuItem.sref}"
+            title="{{secondSubMenuItem.title}}"
           >
             {{secondSubMenuItem.title}}
           </li>

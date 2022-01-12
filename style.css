@@ -27,7 +27,7 @@ p {
 .menu > .menu-item > button {
   min-height: 50px;
 }
-.menu ul li.link:hover {
+.menu ul li.menu-link:hover {
   cursor: pointer;
 }
 .menu li > ul {

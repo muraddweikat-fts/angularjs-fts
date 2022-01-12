@@ -23,11 +23,11 @@ function HomeController($scope) {
           children: [
             { title: 'ReactJs' },
             { title: 'AngularJs' },
-            { title: 'Hidden', isVisible: false },
+            { title: 'Hidden', isHidden: true },
             { title: 'NodeJs' },
           ],
         },
-        { title: 'Hidden Menu', isVisible: false },
+        { title: 'Hidden Menu', isHidden: true },
         { title: 'Java' },
       ],
     },
@@ -35,17 +35,15 @@ function HomeController($scope) {
   $scope.rightMenu = [
     {
       title: 'Home',
-      isVisible: true,
       sref: 'home',
     },
     {
       title: 'About',
-      isVisible: true,
       sref: 'about',
     },
     {
       title: 'Hidden',
-      isVisible: false,
+      isHidden: true,
     },
     { title: 'Not Link' },
   ];
