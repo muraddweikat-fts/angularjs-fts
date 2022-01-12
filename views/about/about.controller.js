@@ -1,5 +1,8 @@
-function AboutController($scope) {
+AboutController.$inject = ['$scope', 'CounterService'];
+
+function AboutController($scope, CounterService) {
   'ngInject';
+  CounterService.incrementCount();
 
   $scope.title = 'About';
   $scope.leftMenu = [
@@ -51,6 +54,7 @@ function AboutController($scope) {
       sref: 'about',
     },
   ];
+  $scope.getCount = CounterService.getCount;
 
   function onSaveClick() {
     alert('onSaveClick');
