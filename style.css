@@ -1,0 +1,47 @@
+h1,
+p {
+  font-family: Lato;
+}
+.navbar a,
+.navbar span,
+.navbar button {
+  color: white;
+}
+.navbar li,
+.navbar li button > span {
+  color: black;
+}
+.menu button {
+  background: transparent;
+  border: none;
+}
+.menu > .menu-item > button {
+  min-height: 50px;
+}
+.menu ul li:hover {
+  cursor: pointer;
+}
+.menu li > ul {
+  transform: translatex(100%) scale(0);
+}
+.menu li:hover > ul {
+  transform: translatex(101%) scale(1);
+}
+.menu li > button svg {
+  transform: rotate(-90deg);
+}
+.menu li:hover > button svg {
+  transform: rotate(-270deg);
+}
+.menu-item:hover .menu-item-hover\:scale-100 {
+  transform: scale(1);
+}
+.menu-item:hover .menu-item-hover\:-rotate-180 {
+  transform: rotate(180deg);
+}
+.scale-0 {
+  transform: scale(0);
+}
+.min-w-32 {
+  min-width: 8rem;
+}

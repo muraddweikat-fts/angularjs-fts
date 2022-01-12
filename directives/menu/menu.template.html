@@ -1,0 +1,36 @@
+<div class="menu">
+  <div class="menu-item inline-block" ng-repeat="menuItem in menu">
+    <button
+      class="outline-none focus:outline-none px-3 py-1 flex items-center"
+      ng-if="menuItem.children"
+    >
+      <span class="pr-1 font-semibold flex-1">{{menuItem.title}}</span>
+      <span>
+        <r365-arrow></r365-arrow>
+      </span>
+    </button>
+    <ul
+      class="
+        bg-white
+        transform
+        scale-0
+        menu-item-hover:scale-100
+        absolute
+        transition
+        duration-150
+        ease-in-out
+        origin-top
+      "
+      style="margin-top: 1px"
+      ng-if="menuItem.children"
+    >
+      <li
+        class="px-3 py-1 hover:bg-purple-400"
+        ng-repeat="subMenuItem in menuItem.children"
+      >
+        {{subMenuItem.title}}
+      </li>
+    </ul>
+    <li ng-if="!menuItem.children">{{menuItem.title}}</li>
+  </div>
+</div>
