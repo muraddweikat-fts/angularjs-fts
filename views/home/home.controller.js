@@ -1,7 +1,5 @@
-HomeController.$inject = ['$scope', 'CounterService'];
-function HomeController($scope, CounterService) {
-  CounterService.incrementCount();
-
+HomeController.$inject = ['$scope'];
+function HomeController($scope) {
   $scope.title = 'Home';
   $scope.leftMenu = [
     {
@@ -25,7 +23,7 @@ function HomeController($scope, CounterService) {
           children: [
             { title: 'ReactJs' },
             { title: 'AngularJs' },
-            { title: 'Hidden', isHidden: true },
+            { title: 'Hidden', isHidden: () => false },
             { title: 'NodeJs' },
           ],
         },
@@ -44,6 +42,5 @@ function HomeController($scope, CounterService) {
       sref: 'about',
     },
   ];
-  $scope.getCount = CounterService.getCount;
 }
 export default HomeController;

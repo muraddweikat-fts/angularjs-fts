@@ -1,7 +1,7 @@
 <div class="menu">
   <ul class="menu-item inline-block" ng-repeat="menuItem in menu">
     <li
-      ng-if="!menuItem.children && !menuItem.isHidden"
+      ng-if="!menuItem.children && isVisible(menuItem)"
       title="{{menuItem.title}}"
     >
       <a ui-sref="{{menuItem.sref}}" ng-if="menuItem.sref"
@@ -11,7 +11,7 @@
     </li>
     <button
       class="outline-none focus:outline-none px-3 py-1 flex items-center"
-      ng-if="menuItem.children && !menuItem.isHidden"
+      ng-if="menuItem.children && isVisible(menuItem)"
     >
       <span class="pr-1 font-semibold flex-1">{{menuItem.title}}</span>
       <r365-arrow></r365-arrow>
@@ -31,11 +31,11 @@
         second-level
       "
       style="margin-top: 1px"
-      ng-if="menuItem.children && !menuItem.isHidden"
+      ng-if="menuItem.children && isVisible(menuItem)"
     >
       <li
-        ng-if="!subMenuItem.isHidden"
         ng-repeat="subMenuItem in menuItem.children"
+        ng-if="isVisible(subMenuItem)"
         ng-click="subMenuItem.onClick()"
         class="relative px-3 py-1 hover:bg-purple-400"
         ng-class="{'menu-link': subMenuItem.onClick || subMenuItem.sref}"
@@ -74,7 +74,7 @@
         >
           <li
             ng-repeat="secondSubMenuItem in subMenuItem.children"
-            ng-if="!secondSubMenuItem.isHidden"
+            ng-if="isVisible(secondSubMenuItem)"
             ng-click="secondSubMenuItem.onClick()"
             class="px-3 py-1 hover:bg-purple-400"
             ng-class="{'menu-link': secondSubMenuItem.onClick || secondSubMenuItem.sref}"

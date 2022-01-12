@@ -5,6 +5,15 @@ function MenuDirective() {
     scope: {
       menu: '=',
     },
+    link($scope) {
+      $scope.isVisible = (menuItem) => {
+        if (typeof menuItem.isHidden === 'function') {
+          return !menuItem.isHidden();
+        } else {
+          return !menuItem.isHidden;
+        }
+      };
+    },
   };
 }
 export default MenuDirective;
