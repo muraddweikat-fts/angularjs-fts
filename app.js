@@ -4,10 +4,12 @@ import '@uirouter/angularjs';
 // Import your app stylesheets
 import './style.css';
 
-// Import your app functionality
+// Directives
 import './directives';
-import './home';
-import './about';
+
+// Pages
+import './views/home';
+import './views/about';
 
 // Create and bootstrap application
 const requires = ['ui.router', 'directives', 'home', 'about'];

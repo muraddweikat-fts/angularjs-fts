@@ -5,12 +5,12 @@ function HomeConfig($stateProvider) {
     .state('home', {
       url: '/home',
       controller: 'HomeController',
-      templateUrl: 'home/template.html',
+      templateUrl: 'views/home/template.html',
     })
     .state('otherwise', {
       url: '/',
       controller: 'HomeController',
-      templateUrl: 'home/template.html',
+      templateUrl: 'views/home/template.html',
     });
 }
 

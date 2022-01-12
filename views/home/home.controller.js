@@ -41,11 +41,6 @@ function HomeController($scope) {
       title: 'About',
       sref: 'about',
     },
-    {
-      title: 'Hidden',
-      isHidden: true,
-    },
-    { title: 'Not Link' },
   ];
 }
 export default HomeController;

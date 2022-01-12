@@ -50,11 +50,6 @@ function AboutController($scope) {
       title: 'About',
       sref: 'about',
     },
-    {
-      title: 'Hidden',
-      isHidden: true,
-    },
-    { title: 'Not Link' },
   ];
 
   function onSaveClick() {
