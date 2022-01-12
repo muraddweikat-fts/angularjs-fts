@@ -1,3 +1,3 @@
-# angularjs-buidux
+# angularjs dummy task app
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angularjs-buidux)
+# The task still under progress.
