@@ -17,6 +17,10 @@ import './views/about';
 // Create and bootstrap application
 const requires = ['ui.router', 'directives', 'services', 'home', 'about'];
 
-window.app = angular.module('app', requires);
+window.app = angular
+  .module('app', requires)
+  .config(function ($locationProvider) {
+    $locationProvider.html5Mode(true);
+  });
 
 angular.bootstrap(document.getElementById('app'), ['app']);

@@ -1,3 +1,5 @@
+angular.module('directives').directive('r365Arrow', ArrowDirective);
+
 function ArrowDirective() {
   return {
     restrict: 'E',

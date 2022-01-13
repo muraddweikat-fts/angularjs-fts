@@ -1,3 +1,5 @@
+angular.module('directives').directive('r365Navbar', NabvarDirective);
+
 function NabvarDirective() {
   return {
     restrict: 'AE',

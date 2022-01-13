@@ -1,6 +1,6 @@
-AboutController.$inject = ['$scope'];
+AboutController.$inject = ['$scope', '$state'];
 
-function AboutController($scope) {
+function AboutController($scope, $state) {
   'ngInject';
 
   $scope.title = 'About';
@@ -46,16 +46,20 @@ function AboutController($scope) {
   $scope.rightMenu = [
     {
       title: 'Home',
-      sref: 'home',
+      onClick: goTo.bind(this, 'home'), // You can use $state to navigate to a route.
     },
     {
       title: 'About',
-      sref: 'about',
+      sref: 'about', // Or you can use 'sref' to navigate to a route.
     },
   ];
 
   function onSaveClick() {
     alert('onSaveClick');
+  }
+
+  function goTo(path) {
+    return $state.go(path, {}, { location: 'replace' });
   }
 }
 

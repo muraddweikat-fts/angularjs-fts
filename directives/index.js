@@ -4,14 +4,9 @@ import angular from 'angular';
 const directivesModule = angular.module('directives', []);
 
 // Directives
-import MenuDirective from './menu/menu.directive';
-import ArrowDirective from './arrow/arrow.directive';
-import NabvarDirective from './navbar/navbar.directive';
-import CounterDirective from './counter/counter.directive';
-
-directivesModule.directive('r365Menu', MenuDirective);
-directivesModule.directive('r365Arrow', ArrowDirective);
-directivesModule.directive('r365Navbar', NabvarDirective);
-directivesModule.directive('r365Counter', ['CounterService', CounterDirective]);
+import './menu/menu.directive';
+import './arrow/arrow.directive';
+import './navbar/navbar.directive';
+import './counter/counter.directive';
 
 export default directivesModule;

@@ -7,7 +7,12 @@
       <a ui-sref="{{menuItem.sref}}" ng-if="menuItem.sref"
         >{{menuItem.title}}</a
       >
-      <span ng-if="!menuItem.sref">{{menuItem.title}}</span>
+      <span
+        ng-if="!menuItem.sref"
+        ng-click="menuItem.onClick()"
+        ng-class="{'menu-link': menuItem.onClick}"
+        >{{menuItem.title}}</span
+      >
     </li>
     <button
       class="outline-none focus:outline-none px-3 py-1 flex items-center"

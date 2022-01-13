@@ -1,3 +1,5 @@
+angular.module('directives').directive('r365Menu', MenuDirective);
+
 function MenuDirective() {
   return {
     restrict: 'AE',
