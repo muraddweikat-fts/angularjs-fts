@@ -4,7 +4,25 @@
   right-menu="rightMenu"
 ></r365-navbar>
 
-<div class="container">
+<div id="content" class="container p-4">
+  <button
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    ng-click="callGetDummyUsers()"
+  >
+    Get Users
+  </button>
+
+  <h2>Users:</h2>
+  <ul class="disc-list" ng-if="!!users.length && !isLoading">
+    <li ng-repeat="user in users">
+      {{user.first_name}} {{user.last_name}} &lt{{user.email}}&gt
+    </li>
+  </ul>
+  <p class="text-red-500" ng-if="!users.length && !isLoading && isFetched">
+    No Available users.
+  </p>
+  <p class="text-blue-500" ng-if="isLoading">Fetching...</p>
+
   <div class="absolute bottom-5 right-5">
     <r365-counter></r365-counter>
   </div>

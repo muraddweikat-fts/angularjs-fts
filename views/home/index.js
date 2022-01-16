@@ -12,4 +12,6 @@ homeModule.config(HomeConfig);
 import HomeCtrl from './home.controller';
 homeModule.controller('HomeController', HomeCtrl);
 
+homeModule.controller('HomeToasterController', function () {});
+
 export default homeModule;

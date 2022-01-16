@@ -1,5 +1,39 @@
-HomeController.$inject = ['$scope'];
-function HomeController($scope) {
+HomeController.$inject = ['$scope', 'ToastrService'];
+function HomeController($scope, ToastrService) {
+  $scope.isLoading = false;
+  $scope.isFetched = false;
+  $scope.callGetDummyUsers = function () {
+    $scope.isLoading = true;
+    setTimeout(() => {
+      // TODO: call Service API
+      fetch('https://reqres.in/api/users?page=1')
+        .then((response) => response.json())
+        .then((data) => {
+          $scope.users = data.data;
+        })
+        .then(() => {
+          ToastrService.open({
+            controller: 'HomeToasterController',
+            templateUrl: '../../services/toastr/default.template.html',
+            locals: {
+              toastr: {
+                type: 'success',
+                message: 'You API called successfully.',
+              },
+            },
+          });
+          $scope.$applyAsync(() => {
+            console.log('Applied Digest');
+          });
+        })
+        .finally(() => {
+          $scope.isLoading = false;
+          $scope.isFetched = true;
+        });
+    }, 1000);
+  };
+
+  $scope.users = [];
   $scope.title = 'Home';
   $scope.leftMenu = [
     {

@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@uirouter/angularjs": "1.0.15",
+    "@uirouter/angularjs": "^1.0.30",
     "angular": "1.6.9",
     "autoprefixer": "^10.4.2",
-    "postcss": "^8.1.0",
+    "jquery": "^3.6.0",
+    "postcss": "^8.4.5",
     "tailwind": "^4.0.0"
   }
 }
