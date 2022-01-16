@@ -1,8 +1,8 @@
-# angularjs dummy task app
+# AngularJs app
 
-# Conatins:
+# We build this app for learning the following topics:
 
-* Pages: ( Home, About ).
+* Pages routing: ( Home, About )
 
 * Directives ( Navbar, Menu, Counter )
 
