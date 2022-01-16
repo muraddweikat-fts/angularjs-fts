@@ -11,8 +11,6 @@ function ToastrService($controller, $compile, $rootScope) {
 
   // TODO: handle open multi toast
   _self.open = function (configs) {
-    console.log('configs', configs);
-    return;
     let sharedScope;
 
     if (configs.scope) {

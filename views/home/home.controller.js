@@ -12,18 +12,17 @@ function HomeController($scope, ToastrService) {
           $scope.users = data.data;
         })
         .then(() => {
-          ToastrService.open({
-            controller: 'HomeToasterController',
-            templateUrl: '../../services/toastr/default.template.html',
-            locals: {
-              toastr: {
-                type: 'success',
-                message: 'You API called successfully.',
-              },
-            },
+          showToastr({
+            type: 'success',
+            message: 'The users fetched successfully.',
           });
-          $scope.$applyAsync(() => {
-            console.log('Applied Digest');
+          $scope.$applyAsync();
+        })
+        .catch((err) => {
+          console.log(err);
+          showToastr({
+            type: 'error',
+            message: err.messagw,
           });
         })
         .finally(() => {
@@ -76,5 +75,17 @@ function HomeController($scope, ToastrService) {
       sref: 'about',
     },
   ];
+
+  function showToastr({ type, message }) {
+    ToastrService.open({
+      templateUrl: '../../services/toastr/default.template.html',
+      locals: {
+        toastr: {
+          type,
+          message,
+        },
+      },
+    });
+  }
 }
 export default HomeController;

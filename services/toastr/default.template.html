@@ -1,5 +1,9 @@
 <div class="toastr-item toastr-{{toastr.type}}">
   <div class="toastr-content">
-    <p>{{toastr.message}}</p>
+    <span class="mr-2" ng-switch on="toastr.type">
+      <span ng-switch-when="success">✔</span>
+      <span ng-switch-when="error">❌</span>
+    </span>
+    <span>{{toastr.message}}</span>
   </div>
 </div>

@@ -70,7 +70,7 @@ p {
 }
 .toastr .toastr-item {
   border-radius: 8px;
-  padding: 4px 8px;
+  padding: 8px;
 }
 .toastr .toastr-item.show .toastr .toastr-item h1,
 .toastr .toastr-item h2,
@@ -87,7 +87,7 @@ p {
 .toastr .toastr-item span {
   font-size: 14px;
 }
-.toastr .toastr-item.toastr-succuss {
+.toastr .toastr-item.toastr-success {
   background-color: green;
 }
 .toastr .toastr-item.toastr-error {
