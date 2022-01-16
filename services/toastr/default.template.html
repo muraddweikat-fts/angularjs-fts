@@ -1,9 +1,9 @@
-<div class="toastr-item toastr-{{toastr.type}}">
+<div class="toastr-item toastr-{{type}}">
   <div class="toastr-content">
-    <span class="mr-2" ng-switch on="toastr.type">
+    <span class="mr-1" ng-switch on="type">
       <span ng-switch-when="success">✔</span>
       <span ng-switch-when="error">❌</span>
     </span>
-    <span>{{toastr.message}}</span>
+    <span>{{message}}</span>
   </div>
 </div>

@@ -4,32 +4,31 @@ function HomeController($scope, ToastrService) {
   $scope.isFetched = false;
   $scope.callGetDummyUsers = function () {
     $scope.isLoading = true;
-    setTimeout(() => {
-      // TODO: call Service API
-      fetch('https://reqres.in/api/users?page=1')
-        .then((response) => response.json())
-        .then((data) => {
-          $scope.users = data.data;
-        })
-        .then(() => {
-          showToastr({
-            type: 'success',
-            message: 'The users fetched successfully.',
-          });
-          $scope.$applyAsync();
-        })
-        .catch((err) => {
-          console.log(err);
-          showToastr({
-            type: 'error',
-            message: err.messagw,
-          });
-        })
-        .finally(() => {
-          $scope.isLoading = false;
-          $scope.isFetched = true;
+
+    fetch('https://reqres.in/api/users?page=1')
+      .then(delay(1000)) // Add some delay for increase loading time :p ( no need in real app)
+      .then((response) => response.json())
+      .then((data) => {
+        $scope.users = data.data;
+      })
+      .then(() => {
+        showToastr({
+          type: 'success',
+          message: 'The users fetched successfully.',
         });
-    }, 1000);
+        $scope.$applyAsync();
+      })
+      .catch((err) => {
+        console.log(err);
+        showToastr({
+          type: 'error',
+          message: err.messagw,
+        });
+      })
+      .finally(() => {
+        $scope.isLoading = false;
+        $scope.isFetched = true;
+      });
   };
 
   $scope.users = [];
@@ -78,14 +77,17 @@ function HomeController($scope, ToastrService) {
 
   function showToastr({ type, message }) {
     ToastrService.open({
-      templateUrl: '../../services/toastr/default.template.html',
       locals: {
-        toastr: {
-          type,
-          message,
-        },
+        type,
+        message,
       },
     });
+  }
+
+  function delay(ms) {
+    return function (x) {
+      return new Promise((resolve) => setTimeout(() => resolve(x), ms));
+    };
   }
 }
 export default HomeController;

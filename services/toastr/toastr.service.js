@@ -10,7 +10,11 @@ function ToastrService($controller, $compile, $rootScope) {
   var _self = this;
 
   // TODO: handle open multi toast
-  _self.open = function (configs) {
+  _self._createToastr = function (configs) {
+    var toastrInstance = {
+      show: handleShowToastrInDOM,
+      configs,
+    };
     let sharedScope;
 
     if (configs.scope) {
@@ -27,15 +31,11 @@ function ToastrService($controller, $compile, $rootScope) {
     }
     var templateDivWrap = angular.element($('.toastr'));
 
-    // Load the toastr template
-    if (configs.template) {
-      templateDivWrap.html(configs.template);
-      handleCompilingAngular();
-    } else {
-      $(templateDivWrap).load(configs.Test, handleCompilingAngular);
-    }
+    templateDivWrap.html(configs.template);
 
-    function handleCompilingAngular() {
+    return toastrInstance;
+
+    function handleShowToastrInDOM() {
       $('.toastr').addClass('show');
       if (configs.controller) {
         $controller(configs.controller, sharedScope);
@@ -46,5 +46,13 @@ function ToastrService($controller, $compile, $rootScope) {
         $('.toastr').removeClass('show');
       }, 3000);
     }
+  };
+
+  _self.open = function (configs) {
+    var toastrInstance = _self._createToastr({
+      templateUrl: './default.template.html',
+      ...configs,
+    });
+    return toastrInstance.show();
   };
 }
