@@ -1,3 +1,9 @@
 # angularjs dummy task app
 
-# The task still under progress.
+# Conatins:
+
+* Pages: ( Home, About ).
+
+* Directives ( Navbar, Menu, Counter )
+
+* Services: ( Counter, Toastr )
